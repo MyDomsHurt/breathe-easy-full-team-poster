@@ -7,3 +7,10 @@ node_modules/
 .cache/
 *.swp
 *~
+# Local QA only (optional large captures)
+assets/reference/stage-capture-live-number.png
+assets/numbers/digits/_preview*.png
+assets/numbers/digits/glyph_*.png
+assets/numbers/digits/1_raw.png
+assets/numbers/digits/_preview.png
+# assets/b64/ tracked for GitHub Pages binary fallback
