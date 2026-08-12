@@ -1,0 +1,854 @@
+/* Breathe-Easy Full Team Poster — stage + layout shells
+   Positions follow docs/LAYOUT_BLUEPRINT.md (percent of stage).
+   Stage 1: wireframe outlines for structural review. */
+
+:root {
+  --poster-w: 784;
+  --poster-h: 1168;
+  --be-page: #f4f6f9;
+  --be-stage: #f8f8f8;
+  --be-navy-deep: #001b40;
+  --be-navy: #0a2a5c;
+  --be-metal: #1e6bc8;
+  --be-sky: #6bb0e8;
+  --be-card: #f7f9fc;
+  --be-muted: #7a8ba0;
+  --be-delta: #1fa971;
+  --be-white: #ffffff;
+  --rank-1: #2f6bff;
+  --rank-2: #1aa6a0;
+  --rank-3: #3cb54a;
+  --rank-4: #8b4fcf;
+  --rank-5: #e67a2e;
+  --debug-outline: 1px dashed rgba(10, 42, 92, 0.35);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--be-page);
+  color: var(--be-navy);
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  padding: 0.5rem 0.5rem 1.25rem;
+}
+
+.page-chrome {
+  max-width: 900px;
+  margin: 0 auto 0.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.page-chrome--minimal {
+  justify-content: center;
+}
+
+.page-chrome h1 {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--be-muted);
+}
+
+.page-chrome p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--be-muted);
+}
+
+/* ─── Poster stage — design canvas 784×1168 ─── */
+.poster {
+  position: relative;
+  width: min(100%, 784px);
+  aspect-ratio: 784 / 1168;
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--be-stage);
+  box-shadow:
+    0 1px 2px rgba(0, 27, 64, 0.06),
+    0 12px 40px rgba(0, 27, 64, 0.1);
+}
+
+/* Debug mode: show block frames during Stage 1–2 */
+.poster.is-debug .block {
+  outline: var(--debug-outline);
+  outline-offset: -1px;
+}
+
+.poster.is-debug .block::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  z-index: 50;
+  font-size: clamp(6px, 1.1vw, 10px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(10, 42, 92, 0.55);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1px 4px;
+  pointer-events: none;
+}
+
+.block {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layer utility */
+.layer-waves {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.layer-content {
+  z-index: 10;
+}
+
+/* ─── Zone positions (blueprint %) ─── */
+
+/* Ambient waves (full decorative layers) */
+.waves-hero {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 34.5%;
+  z-index: 1;
+  /* Mask % is relative to .waves-hero box (top 34.5% of stage).
+     Header occupies ~ top 0–9% of stage ≈ 0–26% of this box.
+     TOTAL label ~ bottom of this box. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 26%,
+    #000 32%,
+    #000 74%,
+    transparent 82%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 26%,
+    #000 32%,
+    #000 74%,
+    transparent 82%,
+    transparent 100%
+  );
+}
+
+.waves-hero img,
+.waves-mid img,
+.skyline img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Mid continuous wave extract (poster y ~30–63%) — flows under leaderboard */
+.waves-mid {
+  left: 0;
+  top: 30%;
+  width: 100%;
+  height: 33%;
+  z-index: 3;
+  opacity: 1;
+}
+
+.waves-mid img {
+  object-fit: fill;
+  object-position: left top;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Data-driven metallic digit strip (sprites from assets/numbers/digits/) */
+.hero-total__digits {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  width: 94%;
+  height: 100%;
+  margin-inline: auto;
+  gap: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 20px rgba(0, 30, 80, 0.32));
+}
+
+.hero-digit {
+  display: block;
+  height: 94%;
+  width: auto;
+  max-width: 17.5%;
+  object-fit: contain;
+  object-position: center bottom;
+  margin-inline: -1.1%;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.hero-digit--comma {
+  height: 94%;
+  max-width: 6.5%;
+  margin-inline: -0.6%;
+  object-position: center 72%;
+}
+
+/* A. Header — live logos + slogan from data */
+.header {
+  left: 2.5%;
+  top: 1.2%;
+  width: 95%;
+  height: 7.5%;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2%;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.header__wordmark {
+  height: 100%;
+  width: auto;
+  max-width: min(46%, 280px);
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+
+.header__mark {
+  width: clamp(28px, 6.5%, 48px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.header__wordmark-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.header__name {
+  font-weight: 800;
+  font-size: clamp(12px, 2.6cqw, 22px);
+  color: var(--be-navy);
+  letter-spacing: -0.01em;
+}
+
+.header__sub {
+  font-size: clamp(5px, 1.05cqw, 9px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--be-navy);
+  opacity: 0.9;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  text-align: left;
+}
+
+.header__badge {
+  height: 85%;
+  width: auto;
+  max-height: 52px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.header__slogan {
+  margin: 0;
+  font-size: clamp(5px, 1.1cqw, 10px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: var(--be-navy);
+  white-space: pre-line;
+}
+
+/* B. Hero — live labels + data-driven metallic total */
+.hero-label {
+  left: 10%;
+  top: 8.6%;
+  width: 80%;
+  height: 2.2%;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(7px, 1.4cqw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #8a96a8;
+}
+
+.hero-total {
+  left: 5%;
+  top: 10.5%;
+  width: 90%;
+  height: 16.5%;
+  z-index: 13;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-total__value {
+  /* Metallic treatment refined in metallic-number.css */
+  font-size: clamp(48px, 15.5cqw, 128px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--be-metal);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-sub {
+  left: 10%;
+  top: 27.6%;
+  width: 80%;
+  height: 2.6%;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  font-size: clamp(7px, 1.4cqw, 11.5px);
+  font-weight: 700;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--be-navy);
+}
+
+.hero-sub__diamond {
+  width: 0.5em;
+  height: 0.5em;
+  background: var(--be-metal);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* C. Quote — live text over dark wave art */
+.quote {
+  left: 3.5%;
+  top: 38.5%;
+  width: 38%;
+  height: 15%;
+  z-index: 14;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--be-white);
+  padding: 0 2% 0 1%;
+  background: none;
+}
+
+.quote__text {
+  margin: 0;
+  font-size: clamp(10px, 2cqw, 16.5px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.32;
+  max-width: 16em;
+  text-shadow: 0 1px 2px rgba(0, 20, 50, 0.35);
+}
+
+.quote__attr {
+  margin: 0.55em 0 0;
+  font-size: clamp(7px, 1.25cqw, 11px);
+  font-style: italic;
+  opacity: 0.92;
+  text-shadow: 0 1px 2px rgba(0, 20, 50, 0.3);
+}
+
+/* C. Leaderboard — packed right column; waves continue behind via mid-bg */
+.leaderboard {
+  left: 43.5%;
+  top: 33.8%;
+  width: 53.8%;
+  height: 29%;
+  z-index: 15;
+  background: var(--be-navy-deep);
+  border-radius: clamp(11px, 2.2cqw, 18px);
+  color: var(--be-white);
+  padding: 1.5% 2.4% 1.1%;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 6px 20px rgba(0, 27, 64, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.leaderboard__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.35%;
+  flex-shrink: 0;
+}
+
+.leaderboard__title {
+  margin: 0;
+  font-size: clamp(8px, 1.6cqw, 12.5px);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.leaderboard__sub {
+  margin: 0.08em 0 0;
+  font-size: clamp(5.5px, 1cqw, 8.5px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  opacity: 0.7;
+}
+
+.leaderboard__trophy {
+  width: clamp(13px, 2.6cqw, 19px);
+  height: auto;
+  opacity: 0.85;
+}
+
+.leaderboard__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 0;
+}
+
+.leaderboard__row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: center;
+  gap: 0.35em;
+  min-height: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.22em 0;
+}
+
+.leaderboard__row:first-child {
+  border-top: none;
+}
+
+.leaderboard__rank {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: clamp(6.5px, 1.1cqw, 9.5px);
+  font-weight: 800;
+  color: #fff;
+  background: var(--rank-1);
+}
+
+.leaderboard__row[data-rank="2"] .leaderboard__rank { background: var(--rank-2); }
+.leaderboard__row[data-rank="3"] .leaderboard__rank { background: var(--rank-3); }
+.leaderboard__row[data-rank="4"] .leaderboard__rank { background: var(--rank-4); }
+.leaderboard__row[data-rank="5"] .leaderboard__rank { background: var(--rank-5); }
+
+.leaderboard__avatar {
+  width: 1.45em;
+  height: 1.45em;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+.leaderboard__avatar--mono {
+  display: grid;
+  place-items: center;
+  font-size: 0.65em;
+  font-weight: 800;
+}
+
+.leaderboard__who {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.leaderboard__name {
+  font-size: clamp(6.5px, 1.2cqw, 10.5px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.leaderboard__role {
+  font-size: clamp(4.5px, 0.85cqw, 7.5px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+.leaderboard__points {
+  font-size: clamp(8.5px, 1.55cqw, 12.5px);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.leaderboard__delta {
+  font-size: clamp(5.5px, 1.05cqw, 9.5px);
+  font-weight: 700;
+  color: var(--be-delta);
+  white-space: nowrap;
+}
+
+.leaderboard__foot {
+  flex-shrink: 0;
+  margin-top: 0.25%;
+  padding-top: 0.9%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: clamp(4.5px, 0.9cqw, 7.5px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  opacity: 0.65;
+}
+
+.leaderboard__foot-dot {
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+  background: var(--be-sky);
+}
+
+/* D. Chart — packed under quote; mountain wash at base */
+.chart {
+  left: 2%;
+  top: 52.2%;
+  width: 46%;
+  height: 30%;
+  z-index: 14;
+  background:
+    url("../assets/waves/chart-ground.png") center bottom / 102% 28% no-repeat,
+    linear-gradient(180deg, #ffffff 0%, #f5f9fd 72%, #eaf3fb 100%);
+  border-radius: clamp(12px, 2.2cqw, 18px);
+  padding: 1.7% 2.2% 1.2%;
+  box-shadow: 0 2px 12px rgba(0, 27, 64, 0.06);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(180, 205, 230, 0.35);
+}
+
+.chart__title {
+  margin: 0;
+  font-size: clamp(7.5px, 1.45cqw, 11.5px);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--be-navy);
+}
+
+.chart__sub {
+  margin: 0.05em 0 0.25em;
+  font-size: clamp(4.5px, 0.9cqw, 7.5px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--be-muted);
+}
+
+.chart__plot {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.chart__plot svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.chart__plot .chart-val {
+  fill: #0a2a5c;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: system-ui, sans-serif;
+}
+
+.chart__plot .chart-x {
+  fill: #7a8ba0;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: system-ui, sans-serif;
+}
+
+/* D. Snapshot — snug under leaderboard, dense 2×2 chrome */
+.snapshot {
+  left: 48%;
+  top: 63.4%;
+  width: 49%;
+  height: 15.8%;
+  z-index: 14;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5%;
+}
+
+.snapshot__title {
+  margin: 0;
+  font-size: clamp(7.5px, 1.4cqw, 11.5px);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--be-navy);
+  text-align: center;
+  line-height: 1.1;
+}
+
+.snapshot__grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3.5% 3.2%;
+  min-height: 0;
+}
+
+.metric {
+  background: #ffffff;
+  border-radius: clamp(9px, 1.6cqw, 14px);
+  padding: 4.5% 6.5%;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 2px 8px rgba(15, 50, 100, 0.06);
+  border: 1px solid rgba(200, 218, 236, 0.55);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 0.35em;
+  row-gap: 0;
+  align-content: center;
+}
+
+.metric__icon {
+  grid-row: 1 / span 3;
+  align-self: center;
+  width: clamp(17px, 3.2cqw, 24px);
+  height: auto;
+  color: var(--be-metal);
+}
+
+.metric__label {
+  margin: 0;
+  font-size: clamp(4.5px, 0.85cqw, 7.5px);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #7a8fa8;
+  line-height: 1.1;
+}
+
+.metric__value {
+  margin: 0;
+  font-size: clamp(11px, 2.05cqw, 16px);
+  font-weight: 800;
+  color: var(--be-navy);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+}
+
+.metric__delta {
+  margin: 0;
+  font-size: clamp(4.5px, 0.85cqw, 7.5px);
+  font-weight: 700;
+  color: var(--be-delta);
+  line-height: 1.15;
+}
+
+/* Tagline pill — flush under snapshot */
+.tagline-pill {
+  left: 49%;
+  top: 79.8%;
+  width: 48%;
+  height: 3.3%;
+  z-index: 15;
+  background: var(--be-navy-deep);
+  color: var(--be-white);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0 2% 0 1.8%;
+  font-size: clamp(4.2px, 0.78cqw, 7px);
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1.12;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0, 27, 64, 0.16);
+  overflow: hidden;
+}
+
+.tagline-pill__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  justify-content: center;
+}
+
+.tagline-pill__line1 {
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.tagline-pill__line2 {
+  font-weight: 600;
+  opacity: 0.95;
+  white-space: nowrap;
+}
+
+.tagline-pill__icon {
+  width: 1.5em;
+  height: 1.5em;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* E. Skyline + footer — denser bottom band */
+.skyline {
+  left: 0;
+  top: 82%;
+  width: 100%;
+  height: 18%;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.skyline img,
+.skyline svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+
+.footer-copy {
+  left: 5%;
+  top: 93.6%;
+  width: 90%;
+  height: 5.2%;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15em;
+  text-align: center;
+  color: var(--be-navy);
+}
+
+.footer-copy__line {
+  margin: 0;
+  font-size: clamp(5.5px, 1.1cqw, 9.5px);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.footer-copy__brand {
+  letter-spacing: 0.22em;
+}
+
+.footer-copy__dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.footer-copy__dots span {
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.footer-copy__dots span:nth-child(1) { background: #2f6bff; }
+.footer-copy__dots span:nth-child(2) { background: #3cb54a; }
+.footer-copy__dots span:nth-child(3) { background: #e67a2e; }
+.footer-copy__dots span:nth-child(4) { background: #1aa6a0; }
+
+/* Container queries for poster-relative type */
+.poster {
+  container-type: inline-size;
+  container-name: poster;
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    padding: 0;
+  }
+
+  .page-chrome {
+    display: none !important;
+  }
+
+  .poster {
+    width: 100%;
+    max-width: none;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .poster.is-debug .block {
+    outline: none;
+  }
+
+  .poster.is-debug .block::after {
+    display: none;
+  }
+}
