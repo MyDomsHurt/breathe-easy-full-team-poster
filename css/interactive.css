@@ -1,0 +1,61 @@
+/* Interactivity — Stage 5 only. Placeholder keeps cascade valid. */
+
+@media (hover: hover) and (pointer: fine) {
+  .leaderboard__row {
+    transition: background-color 0.15s ease;
+    border-radius: 4px;
+    cursor: default;
+  }
+
+  .leaderboard__row:hover,
+  .leaderboard__row:focus-visible {
+    background: rgba(255, 255, 255, 0.07);
+    outline: none;
+  }
+
+  .metric {
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    cursor: default;
+  }
+
+  .metric:hover,
+  .metric:focus-visible {
+    box-shadow: 0 4px 16px rgba(0, 27, 64, 0.12);
+    outline: none;
+  }
+
+  .chart-bar {
+    cursor: default;
+  }
+
+  .chart-bar:hover rect,
+  .chart-bar:focus-visible rect {
+    filter: brightness(1.08);
+  }
+
+  .chart-bar:focus-visible {
+    outline: none;
+  }
+}
+
+/* Tooltip shell (unused until Stage 5) */
+.be-tooltip {
+  position: absolute;
+  z-index: 100;
+  max-width: 16rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  background: var(--be-navy-deep, #001b40);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.be-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

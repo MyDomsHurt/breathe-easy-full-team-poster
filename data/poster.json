@@ -2,7 +2,7 @@
   "period": {
     "label": "THIS MONTH",
     "pointsResetInDays": 6,
-    "resetAnchor": null
+    "resetTemplate": "POINTS RESET IN {n} DAY{s}"
   },
   "totalTeamPoints": 24780,
   "technicians": [
@@ -94,24 +94,26 @@
     }
   },
   "copy": {
-    "quote": "Every clean system is a breath of fresh air for Hong Kong.",
-    "quoteAttr": "— Breathe-Easy Crew",
     "teamLabel": "TEAM BREATHE-EASY",
     "totalLabel": "TOTAL TEAM POINTS",
+    "quote": "Every clean system is a breath of fresh air for Hong Kong.",
+    "quoteAttr": "— Breathe-Easy Crew",
     "leaderboardTitle": "CREW LEADERBOARD",
     "chartTitle": "WEEKLY PERFORMANCE",
     "chartSub": "TEAM POINTS OVER TIME",
     "snapshotTitle": "PERFORMANCE SNAPSHOT",
+    "deltaSuffix": "vs last month",
     "taglinePillLine1": "CLEANER AIR. COOLER CITY. STRONGER TOGETHER.",
     "taglinePillLine2": "— EVERY TECHNICIAN. EVERY HOME. EVERY DAY.",
     "footerLines": [
       "WE CLEAN SYSTEMS. WE PROTECT BREATHS.",
       "WE ARE BREATHE-EASY."
     ],
-    "slogan": "CLEAN AIR.\nBETTER LIFE.\nHONG KONG."
+    "slogan": "CLEAN AIR.\nBETTER LIFE.\nHONG KONG.",
+    "wordmarkAlt": "Breathe-Easy AC Cleaning Crew Hong Kong"
   },
   "meta": {
     "source": "Seeded from Breathe-Easy Performance Poster.jpg",
-    "version": "1.0.0"
+    "version": "1.1.0"
   }
 }

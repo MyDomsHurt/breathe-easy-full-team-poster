@@ -1,0 +1,21 @@
+/* Component polish beyond base poster shells.
+   Stage 1: minimal. Expand during static lock (Stage 3). */
+
+/* Ensure uppercase display matches poster lettering style where markup is title case */
+.leaderboard__title,
+.leaderboard__sub,
+.leaderboard__name,
+.leaderboard__role,
+.leaderboard__foot,
+.chart__title,
+.chart__sub,
+.snapshot__title,
+.metric__label,
+.hero-label,
+.hero-sub {
+  text-transform: uppercase;
+}
+
+.quote__text {
+  quotes: none;
+}
