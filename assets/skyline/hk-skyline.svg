@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784 160" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8F3FC" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#C5DFF5" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#8EBFEA" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A8D4F5"/>
+      <stop offset="55%" stop-color="#6BAEE8"/>
+      <stop offset="100%" stop-color="#3D8AD0"/>
+    </linearGradient>
+    <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5A7FA8"/>
+      <stop offset="100%" stop-color="#1A3A68"/>
+    </linearGradient>
+  </defs>
+  <!-- soft sky fade -->
+  <rect x="0" y="0" width="784" height="100" fill="url(#sky)"/>
+  <!-- mountain / Lion Rock right -->
+  <path d="M520 95 C560 40 620 20 680 55 C720 80 760 70 800 90 L800 110 L500 110 Z" fill="#6A8DB0" opacity="0.85"/>
+  <path d="M560 100 C590 60 640 45 690 70 C730 90 760 85 800 100 L800 115 L540 115 Z" fill="#4A6F98" opacity="0.75"/>
+  <!-- skyline silhouette left-center -->
+  <g fill="url(#bld)" opacity="0.92">
+    <rect x="40" y="78" width="10" height="32"/>
+    <rect x="52" y="70" width="12" height="40"/>
+    <rect x="66" y="75" width="9" height="35"/>
+    <rect x="78" y="62" width="14" height="48"/>
+    <rect x="94" y="72" width="10" height="38"/>
+    <rect x="108" y="55" width="16" height="55"/>
+    <rect x="128" y="68" width="11" height="42"/>
+    <rect x="142" y="48" width="18" height="62"/>
+    <!-- IFC-ish -->
+    <path d="M168 110 V30 c0 0 6 8 6 20 V110 Z"/>
+    <path d="M174 50 c8 12 16 18 20 22 V110 h-20 Z"/>
+    <rect x="200" y="60" width="12" height="50"/>
+    <rect x="216" y="72" width="9" height="38"/>
+    <rect x="230" y="50" width="14" height="60"/>
+    <rect x="248" y="65" width="10" height="45"/>
+    <rect x="262" y="40" width="16" height="70"/>
+    <rect x="282" y="58" width="11" height="52"/>
+    <rect x="298" y="70" width="9" height="40"/>
+    <rect x="312" y="52" width="13" height="58"/>
+    <rect x="330" y="64" width="10" height="46"/>
+    <rect x="346" y="45" width="15" height="65"/>
+    <rect x="366" y="68" width="10" height="42"/>
+    <rect x="382" y="55" width="12" height="55"/>
+    <rect x="400" y="72" width="9" height="38"/>
+    <rect x="414" y="60" width="11" height="50"/>
+    <rect x="430" y="75" width="8" height="35"/>
+    <rect x="444" y="66" width="10" height="44"/>
+    <rect x="460" y="78" width="8" height="32"/>
+  </g>
+  <!-- water -->
+  <rect x="0" y="108" width="784" height="52" fill="url(#water)"/>
+  <!-- wave lines -->
+  <path d="M0 118 C60 112 120 126 180 118 S300 112 360 120 S480 112 540 120 S660 112 720 118 S780 124 800 118" stroke="#FFFFFF" stroke-width="1.5" opacity="0.45" fill="none"/>
+  <path d="M0 128 C70 122 140 136 210 128 S350 122 420 130 S560 122 630 130 S730 122 800 128" stroke="#D6EBFA" stroke-width="1.3" opacity="0.5" fill="none"/>
+  <path d="M0 140 C80 134 160 148 240 140 S400 134 480 142 S640 134 720 142 S780 148 800 140" stroke="#FFFFFF" stroke-width="1.2" opacity="0.35" fill="none"/>
+  <!-- soft reflections -->
+  <g fill="#1A3A68" opacity="0.12">
+    <rect x="108" y="112" width="16" height="18"/>
+    <rect x="168" y="112" width="20" height="22"/>
+    <rect x="262" y="112" width="16" height="16"/>
+    <rect x="346" y="112" width="15" height="14"/>
+  </g>
+</svg>
