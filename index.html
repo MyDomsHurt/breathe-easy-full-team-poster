@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Breathe-Easy — Full Team Performance Poster</title>
+  <meta name="description" content="Living Full Team performance poster for Breathe-Easy AC Cleaning Crew Hong Kong." />
+  <link rel="stylesheet" href="css/poster.css" />
+  <link rel="stylesheet" href="css/metallic-number.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/interactive.css" />
+</head>
+<body>
+  <header class="page-chrome page-chrome--minimal">
+    <h1>Breathe-Easy · Full Team Poster</h1>
+  </header>
+
+  <!--
+    Poster stage: fixed aspect 784/1168.
+    Block positions = % of stage (see docs/LAYOUT_BLUEPRINT.md).
+    Numbers below are hardcoded poster seed values (static lock before live data).
+  -->
+  <main
+    class="poster"
+    id="poster"
+    role="img"
+    aria-label="Breathe-Easy full team performance poster"
+  >
+    <!-- Hero waves without baked number (number is data-driven digit strip). -->
+    <div class="block layer-waves waves-hero" data-label="waves-hero" aria-hidden="true">
+      <img src="assets/waves/hero-bg.png" alt="" id="hero-bg-img" />
+    </div>
+    <div class="block layer-waves waves-mid" data-label="waves-mid" aria-hidden="true">
+      <!-- Poster-extracted quote wave (includes quote type for fidelity) -->
+      <img src="assets/waves/mid-bg.png" alt="" />
+    </div>
+
+    <!-- A. Header: logos are brand marks (image); slogan text is live -->
+    <header class="block layer-content header" data-label="header">
+      <div class="header__brand">
+        <img
+          class="header__wordmark"
+          data-field="wordmarkAlt"
+          src="assets/logos/wordmark.png"
+          alt="Breathe-Easy AC Cleaning Crew Hong Kong"
+          width="280"
+          height="80"
+        />
+      </div>
+      <div class="header__right">
+        <img
+          class="header__badge"
+          src="assets/logos/skyline-badge.png"
+          alt=""
+          width="72"
+          height="64"
+        />
+        <p class="header__slogan" data-field="slogan">Clean Air.<br />Better Life.<br />Hong Kong.</p>
+      </div>
+    </header>
+
+    <!-- B. Hero labels + data-driven metallic total -->
+    <p class="block layer-content hero-label" data-label="hero-label" data-field="teamLabel">TEAM BREATHE-EASY</p>
+
+    <div class="block layer-content hero-total" data-label="hero-total">
+      <div
+        class="hero-total__digits"
+        data-field="totalTeamPointsDigits"
+        role="img"
+        aria-label="total team points"
+      ></div>
+      <span class="hero-total__value visually-hidden" data-field="totalTeamPoints"></span>
+    </div>
+
+    <p class="block layer-content hero-sub" data-label="hero-sub">
+      <span class="hero-sub__diamond" aria-hidden="true"></span>
+      <span data-field="totalLabel">TOTAL TEAM POINTS</span>
+      <span class="hero-sub__diamond" aria-hidden="true"></span>
+    </p>
+
+    <!-- C. Quote — live HTML over wave art -->
+    <blockquote class="block layer-content quote" data-label="quote">
+      <p class="quote__text" data-field="quote"></p>
+      <footer class="quote__attr" data-field="quoteAttr"></footer>
+    </blockquote>
+
+    <!-- C. Leaderboard — fully rebuilt from data.technicians -->
+    <section class="block layer-content leaderboard" data-label="leaderboard" aria-labelledby="lb-title">
+      <div class="leaderboard__head">
+        <div>
+          <h2 class="leaderboard__title" id="lb-title" data-field="leaderboardTitle">CREW LEADERBOARD</h2>
+          <p class="leaderboard__sub" data-field="periodLabel">THIS MONTH</p>
+        </div>
+        <img
+          class="leaderboard__trophy"
+          src="assets/icons/trophy.svg"
+          alt=""
+          width="22"
+          height="22"
+        />
+      </div>
+
+      <ol class="leaderboard__list" data-field="technicians"></ol>
+
+      <div class="leaderboard__foot">
+        <span data-field="pointsResetInDays"></span>
+        <span class="leaderboard__foot-dot" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <!-- D. Weekly chart — titles + series from data -->
+    <section class="block layer-content chart" data-label="chart" aria-labelledby="chart-title">
+      <h2 class="chart__title" id="chart-title" data-field="chartTitle">WEEKLY PERFORMANCE</h2>
+      <p class="chart__sub" data-field="chartSub">TEAM POINTS OVER TIME</p>
+      <div class="chart__plot" data-field="weekly"></div>
+    </section>
+
+    <!-- D. Snapshot — cards rebuilt from data.snapshot -->
+    <section class="block layer-content snapshot" data-label="snapshot" aria-labelledby="snap-title">
+      <h2 class="snapshot__title" id="snap-title" data-field="snapshotTitle">PERFORMANCE SNAPSHOT</h2>
+      <div class="snapshot__grid" data-field="snapshot"></div>
+    </section>
+
+    <!-- Tagline pill -->
+    <div class="block layer-content tagline-pill" data-label="tagline-pill">
+      <img class="tagline-pill__icon" src="assets/icons/skyline-mini.svg" alt="" />
+      <span class="tagline-pill__text">
+        <span class="tagline-pill__line1" data-field="taglinePillLine1"></span>
+        <span class="tagline-pill__line2" data-field="taglinePillLine2"></span>
+      </span>
+    </div>
+
+    <!-- E. Skyline (decorative illustration only) -->
+    <div class="block skyline" data-label="skyline" aria-hidden="true">
+      <img src="assets/skyline/footer-bg.png" alt="" />
+    </div>
+
+    <!-- Footer -->
+    <footer class="block layer-content footer-copy" data-label="footer">
+      <p class="footer-copy__line" data-field="footerLine0"></p>
+      <p class="footer-copy__line footer-copy__brand">
+        <span class="footer-copy__dots" aria-hidden="true">
+          <span></span><span></span>
+        </span>
+        <span data-field="footerLine1"></span>
+        <span class="footer-copy__dots" aria-hidden="true">
+          <span></span><span></span>
+        </span>
+      </p>
+    </footer>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
