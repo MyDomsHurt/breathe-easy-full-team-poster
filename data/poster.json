@@ -1,0 +1,117 @@
+{
+  "period": {
+    "label": "THIS MONTH",
+    "pointsResetInDays": 6,
+    "resetAnchor": null
+  },
+  "totalTeamPoints": 24780,
+  "technicians": [
+    {
+      "id": "matthew",
+      "name": "MATTHEW",
+      "role": "TEAM LEAD",
+      "rank": 1,
+      "points": 5620,
+      "deltaPct": 12,
+      "avatar": "assets/avatars/matthew.png"
+    },
+    {
+      "id": "tiago",
+      "name": "TIAGO",
+      "role": "TECHNICIAN",
+      "rank": 2,
+      "points": 4980,
+      "deltaPct": 9,
+      "avatar": "assets/avatars/tiago.png"
+    },
+    {
+      "id": "nick",
+      "name": "NICK",
+      "role": "TECHNICIAN",
+      "rank": 3,
+      "points": 4610,
+      "deltaPct": 7,
+      "avatar": "assets/avatars/nick.png"
+    },
+    {
+      "id": "alun",
+      "name": "ALUN",
+      "role": "TECHNICIAN",
+      "rank": 4,
+      "points": 4310,
+      "deltaPct": 6,
+      "avatar": "assets/avatars/alun.png"
+    },
+    {
+      "id": "iggi",
+      "name": "IGGI",
+      "role": "TECHNICIAN",
+      "rank": 5,
+      "points": 4260,
+      "deltaPct": 5,
+      "avatar": "assets/avatars/iggi.png"
+    }
+  ],
+  "weekly": [
+    { "week": "W1", "label": "W1", "points": 3210 },
+    { "week": "W2", "label": "W2", "points": 4180 },
+    { "week": "W3", "label": "W3", "points": 5040 },
+    { "week": "W4", "label": "W4", "points": 5670 },
+    { "week": "W5", "label": "W5", "points": 6680 }
+  ],
+  "snapshot": {
+    "jobsCompleted": {
+      "id": "jobs",
+      "label": "JOBS COMPLETED",
+      "value": 312,
+      "unit": null,
+      "deltaPct": 18,
+      "icon": "assets/icons/wind.svg"
+    },
+    "cleanAirScore": {
+      "id": "air",
+      "label": "CLEAN AIR SCORE",
+      "value": 96,
+      "unit": "%",
+      "deltaPct": 8,
+      "icon": "assets/icons/shield.svg"
+    },
+    "filtersRestored": {
+      "id": "filters",
+      "label": "FILTERS RESTORED",
+      "value": 278,
+      "unit": null,
+      "deltaPct": 15,
+      "icon": "assets/icons/droplet.svg"
+    },
+    "energySaved": {
+      "id": "energy",
+      "label": "ENERGY SAVED",
+      "value": 1245,
+      "unit": "kWh",
+      "deltaPct": 14,
+      "icon": "assets/icons/leaf.svg"
+    }
+  },
+  "copy": {
+    "quote": "Every clean system is a breath of fresh air for Hong Kong.",
+    "quoteAttr": "— Breathe-Easy Crew",
+    "teamLabel": "TEAM BREATHE-EASY",
+    "totalLabel": "TOTAL TEAM POINTS",
+    "leaderboardTitle": "CREW LEADERBOARD",
+    "chartTitle": "WEEKLY PERFORMANCE",
+    "chartSub": "TEAM POINTS OVER TIME",
+    "snapshotTitle": "PERFORMANCE SNAPSHOT",
+    "taglinePillLine1": "CLEANER AIR. COOLER CITY. STRONGER TOGETHER.",
+    "taglinePillLine2": "— EVERY TECHNICIAN. EVERY HOME. EVERY DAY.",
+    "footerLines": [
+      "WE CLEAN SYSTEMS. WE PROTECT BREATHS.",
+      "WE ARE BREATHE-EASY."
+    ],
+    "slogan": "CLEAN AIR.\nBETTER LIFE.\nHONG KONG."
+  },
+  "meta": {
+    "source": "Seeded from Breathe-Easy Performance Poster.jpg",
+    "version": "1.0.0"
+  }
+}
